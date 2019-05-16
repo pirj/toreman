@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+grep --invert-match '#' < Procfile | \
+  sed -e 's/^[^:]*: //' | \
+  xargs -I {} \
+    tmux \
+      split-window -v \; \
+      send-keys '[ -s .env ] && source .env; {}' 'C-m' && \
+    tmux \
+      select-pane -t 1 \; \
+      send-keys 'C-d' \; \
+      select-layout even-vertical
