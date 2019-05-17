@@ -10,7 +10,8 @@ image::toreman.png[]
 
 == Usage
 
-Run `toreman`, it will parse your `Procfile` and run each entry in a separate horizontal split.
+In a running tmux session, from a directory containing `Procfile`, run `toreman`.
+It will parse your `Procfile` and run each entry in a separate horizontal split.
 
 Use C-b h/j to navigate between panes, and C-b z to toggle full-screen zoom.
 
