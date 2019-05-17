@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-grep --invert-match '#' < Procfile | \
+grep --invert-match '^#' < Procfile | \
   sed -e 's/^[^:]*: //' | \
   xargs -I {} \
     tmux \
