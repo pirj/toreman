@@ -6,14 +6,25 @@ With tmux, interleaved output, and interactive debugging are not a problem anymo
 
 It's also possible to selectively stop/restart processes.
 
-image::toreman.png[]
+image::tiled.png[]
 
 == Usage
 
 In a running tmux session, from a directory containing `Procfile`, run `toreman`.
-It will parse your `Procfile` and run each entry in a separate horizontal split.
+It will parse your `Procfile` and run each entry in a separate split.
 
 Use C-b h/j to navigate between panes, and C-b z to toggle full-screen zoom.
+
+It's possible to specify a layout as a first argument to `toreman`, e.g.
+
+[source,shell]
+----
+toreman even-vertical
+----
+
+image::even-vertical.png[]
+
+Available layouts are: `even-horizontal`, `even-vertical`, `main-horizontal`, `main-vertical`, `tiled` (default).
 
 == Installation
 
@@ -28,7 +39,7 @@ Otherwise, drop the `toreman` binary somewhere on your `$PATH`, or add an alias 
 
 [source,shell]
 ----
-alias toreman="grep --invert-match '#' < Procfile | sed -e 's/^[^:]*: //' | xargs -I {} tmux split-window -v \; send-keys '[ -s .env ] && source .env; {}' 'C-m' && tmux select-pane -t 1 \; send-keys 'C-d' \; select-layout even-vertical"
+alias toreman="grep --invert-match '#' < Procfile | sed -e 's/^[^:]*: //' | xargs -I {} tmux split-window -v \; send-keys '[ -s .env ] && source .env; {}' 'C-m' && tmux select-pane -t 1 \; send-keys 'C-d' \; select-layout ${1:-tiled}"
 ----
 
 == Alternatives

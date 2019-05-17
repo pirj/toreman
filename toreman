@@ -9,4 +9,4 @@ grep --invert-match '^#' < Procfile | \
     tmux \
       select-pane -t 1 \; \
       send-keys 'C-d' \; \
-      select-layout even-vertical
+      select-layout ${1:-tiled}
