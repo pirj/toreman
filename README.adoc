@@ -46,6 +46,12 @@ alias toreman="grep --invert-match '#' < Procfile | sed -e 's/^[^:]*: //' | xarg
 
 Check out https://github.com/DarthSim/overmind[overmind] if you prefer 1600 lines of Go over one line of shell script, or other https://github.com/ddollar/foreman#ports[Foreman ports].
 
+== Resources
+
+https://fili.pp.ru/oneline-procfile-manager.html[Blog post].
+
+https://www.reddit.com/r/ruby/comments/bpka4m/toreman_a_oneline_foreman_port_for_use_with_tmux/[Reddit thread].
+
 == Author
 
 https://fili.pp.ru[Phil Pirozhkov], software developer in law.
