@@ -1,6 +1,15 @@
 #!/usr/bin/env sh
 
-grep --invert-match '^#' < Procfile |
+while getopts ":f:procfile:" option; do
+  case "${option}" in
+    f) PROCFILE=${OPTARG};;
+    procfile) PROCFILE=${OPTARG};;
+  esac
+done
+
+PROCFILE=${PROCFILE:-Procfile}
+
+grep --invert-match '^#' < $PROCFILE |
   sed -e 's/^[^:]*: //' |
   xargs -I {} \
     tmux \
